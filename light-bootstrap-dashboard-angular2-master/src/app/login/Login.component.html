@@ -1,0 +1,20 @@
+<div class="login">
+  <form class="custom-form" method="post">
+    <h3>Iniciar Sesión</h3>
+    <input
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      placeholder="Correo Electronico"
+      required="required"
+    />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Contraseña"
+      required="required"
+    />
+    <button type="submit" (click)="login()">Iniciar</button>
+  </form>
+</div>
