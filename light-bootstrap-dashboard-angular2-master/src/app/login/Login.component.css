@@ -10,6 +10,10 @@
     padding: 0;
     text-align: center;
   }
+  .a{
+    text-align: center;
+    margin-top: 1rem;
+  }
   .custom-form {
     min-width: 300px;
     max-width: 60%;
