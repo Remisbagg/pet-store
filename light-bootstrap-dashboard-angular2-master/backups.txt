@@ -1,0 +1,94 @@
+<div class="main-content" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Registrar Mascota</h4>
+                    </div>
+                    <div class="content">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Nombre de lamascota</label>
+                                        <input type="text" class="form-control"  placeholder="Nombre Mascota" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Edad de la mascota</label>
+                                        <input type="text" class="form-control" placeholder="Edad mascota" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Raza de la mascota</label>
+                                        <input type="email" class="form-control" placeholder="Raza Mascota">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Correo del dueño</label>
+                                        <input type="text" class="form-control" placeholder="Nombre del dueño" value="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Vacunas</label>
+                                            <!-- Añadir la clase form-control para aplicar estilos de Bootstrap -->
+                                            <select [(ngModel)]="selectedOption" class="form-control">
+                                                <option value="option1">Opción 1</option>
+                                                <option value="option2">Opción 2</option>
+                                                <option value="option3">Opción 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Descripción de la mascota</label>
+                                        <textarea rows="5" class="form-control" placeholder="Descripción" value=""></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Registrar mascota</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+        </div>
+    </div>
+</div>
+
+
+
+import { Component, OnInit } from '@angular/core';
+import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
+import { LegendItem, ChartType } from '../lbd/lbd-chart/lbd-chart.component';
+import * as Chartist from 'chartist';
+
+@Component({
+  selector: 'app-mascotas',
+  templateUrl: './mascotas.component.html',
+  styleUrls: ['./mascotas.component.scss']
+})
+export class MascotasComponent implements OnInit {
+
+  selectedOption: string = '';
+constructor() { }
+
+ngOnInit() {
+
+  }
+
+}
