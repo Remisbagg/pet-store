@@ -13,7 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { MascotasComponent } from './mascotas/mascotas.component';
+
 
 @NgModule({
   imports: [
@@ -34,7 +34,6 @@ import { MascotasComponent } from './mascotas/mascotas.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    MascotasComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
