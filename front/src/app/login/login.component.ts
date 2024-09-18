@@ -36,7 +36,7 @@ export class LoginComponent {
         });
 
         // Redirigir al dashboard
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
       },
       (error: any) => {
         console.error('Error en el inicio de sesión:', error);

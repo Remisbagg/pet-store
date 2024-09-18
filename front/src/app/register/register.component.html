@@ -1,1 +1,67 @@
-<p>register works!</p>
+  <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w780">
+        <div class="card card-3">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h2 class="title">Registration Info</h2>
+                <form method="POST">
+                    <div class="input-group">
+                        <input class="input--style-3" type="text"
+                        [(ngModel)]="name"
+                        name="nombre"
+                        placeholder="Nombre"
+                        required="required"
+                      />
+                    </div>
+                    <div class="input-group">
+                        <input class="input--style-3 js-datepicker" type="number"
+                        [(ngModel)]="number"
+                        name="number" 
+                        placeholder="Edad"
+                        required="required"
+                      />
+                    </div>
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                          <select [(ngModel)]="genero" name="genero" required>
+                            <option value="" disabled selected>Genero</option>  
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
+                          </select>
+                          <div class="select-dropdown"></div>
+                        </div>
+                      </div>
+                    <div class="input-group">
+                        <input class="input--style-3" type="email"
+                        [(ngModel)]="email"
+                        name="email"
+                        placeholder="Correo Electronico"
+                        required="required"
+                      />
+                    </div>
+                    <div class="input-group">
+                        <input class="input--style-3" type="number"
+                        [(ngModel)]="numberCel" 
+                        name="numberCel"  
+                        placeholder="Numero Celular"
+                        required="required"
+                    />
+                    </div>
+                    <div class="input-group">
+                      <input class="input--style-3" type="password"
+                      [(ngModel)]="password"
+                      name="password"
+                      placeholder="Password"
+                      required="required"
+                    />
+                  </div>
+                    <div class="p-t-10">
+                        <button class="btn btn--pill btn--green" type="submit" (click)="Registrarse()">Registrarse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
