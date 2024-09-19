@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioServiceService } from '../services/usuario-service.service'; // Ajusta la ruta si es necesario
 
 declare const $: any;
 declare interface RouteInfo {
@@ -9,13 +10,9 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   { path: '/misMascotas', title: 'Mis Mascotas',  icon:'pe-7s-like', class: '' },
-    { path: '/perfil', title: 'Perfil de Usuario',  icon:'pe-7s-user', class: '' },
-    //{ path: '/table', title: 'Table List',  icon:'pe-7s-note2', class: '' },
-    //{ path: '/login', title: 'Login',  icon:'pe-7s-news-paper', class: '' },
-    //{ path: '/icons', title: 'Icons',  icon:'pe-7s-science', class: '' },
-    //{ path: '/maps', title: 'Maps',  icon:'pe-7s-map-marker', class: '' },
-    //{ path: '/notifications', title: 'Notifications',  icon:'pe-7s-bell', class: '' },
-    //{ path: '/upgrade', title: 'Upgrade to PRO',  icon:'pe-7s-rocket', class: 'active-pro' },
+  { path: '/perfil', title: 'Perfil de Usuario',  icon:'pe-7s-user', class: '' },
+  { path: '/cuidadores', title: 'Cuidadores',  icon:'pe-7s-magic-wand', class: '' },
+  { path: '/dashboard', title: 'Dashboard',  icon:'pe-7s-display1', class: '' },
 ];
 
 @Component({
@@ -23,17 +20,40 @@ export const ROUTES: RouteInfo[] = [
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
-  menuItems: any[]= [];
+  menuItems: RouteInfo[] = [];
+  userRole: string = '';
 
-  constructor() { }
+  constructor(private usuarioService: UsuarioServiceService) { }
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.usuarioService.getUserRole().subscribe(
+      (data: any) => {
+        console.log("LA DATOTA:",data);
+        this.userRole = data.rol;
+        this.filterMenu();
+      },
+      (error) => {
+        console.error('Error al obtener el rol del usuario:', error);
+      }
+    );
   }
+
+  filterMenu() {
+    this.menuItems = ROUTES.filter(menuItem => {
+      if (menuItem.path === '/cuidadores') {
+        return this.userRole === 'admin';
+      }
+      if (menuItem.path === '/dashboard') {
+        return this.userRole === 'admin';
+      }
+      return true; // Para los demás elementos del menú
+    });
+  }
+
   isMobileMenu() {
       if ($(window).width() > 991) {
           return false;
       }
       return true;
-  };
+  }
 }

@@ -1,0 +1,52 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="header">
+              <h4 class="title">Registrar Cuidador</h4>
+            </div>
+            <div class="content">
+              <form (ngSubmit)="registrarCuidador()">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Nombre del Cuidador</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Nombre Cuidador"
+                        [(ngModel)]="nombre"
+                        name="nombre"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Cédula del Cuidador</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Cédula Cuidador"
+                        [(ngModel)]="cedula"
+                        name="cedula"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <!-- El campo id no se necesita porque es autoincrementable -->
+                <!-- El campo fechaRegistro no se incluye porque se genera automáticamente en el backend -->
+                <button type="submit" class="btn btn-info btn-fill pull-right">
+                  Registrar cuidador
+                </button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -22,6 +22,12 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { MascotasComponent } from './mascotas/mascotas.component';
 import { MisMascotasComponent } from './mis-mascotas/mis-mascotas.component';
 import { DetalleMascotaComponent } from './detalle-mascota/detalle-mascota.component';
+import { CuidadoresComponent } from './cuidadores/cuidadores.component';
+import { RegistroCuidadorComponent } from './registro-cuidador/registro-cuidador.component';
+import { DetalleCuidadorComponent } from './detalle-cuidador/detalle-cuidador.component';
+import { ServicioComponent } from './servicio/servicio.component';
+import { DashboardServiciosComponent } from './dashboard-servicios/dashboard-servicios.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -32,6 +38,7 @@ import { DetalleMascotaComponent } from './detalle-mascota/detalle-mascota.compo
     BsDropdownModule.forRoot(),
     RouterModule,
     HttpClientModule,
+    NgApexchartsModule,
     NgScrollbarModule,
     SidebarModule,
     NavbarModule,
@@ -51,6 +58,11 @@ import { DetalleMascotaComponent } from './detalle-mascota/detalle-mascota.compo
     MascotasComponent,
     MisMascotasComponent,
     DetalleMascotaComponent,
+    CuidadoresComponent,
+    RegistroCuidadorComponent,
+    DetalleCuidadorComponent,
+    ServicioComponent,
+    DashboardServiciosComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

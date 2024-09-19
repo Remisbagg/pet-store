@@ -4,6 +4,10 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+export interface CountResponse {
+  count: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -48,4 +52,38 @@ export class UsuarioServiceService {
   updateUserProfile(email: string, userProfile: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/users/profile/${email}`, userProfile, { withCredentials: true });
   }
+
+  getUserRole(): Observable<any> {
+    const email = localStorage.getItem('email');
+    if (email) {
+      return this.getUserProfile(email);
+    } else {
+      // Manejar el caso cuando el email no está en localStorage
+      console.error('No se encontró el email en localStorage');
+      return new Observable(observer => {
+        observer.error('No se encontró el email en localStorage');
+      });
+    }
+  }
+  // Método para contar el número de usuarios
+  getUserCount(): Observable<CountResponse> {
+    return this.http.get<CountResponse>(`${this.apiUrl}/users/count`, { withCredentials: true });
+  }
+
+  // Método para obtener el conteo de cuidadores
+  getCuidadoresCount(): Observable<CountResponse> {
+    return this.http.get<CountResponse>(`${this.apiUrl}/cuidadores/count`, { withCredentials: true });
+  }
+
+  // Método para obtener el conteo de servicios
+  getServiciosCount(): Observable<CountResponse> {
+    return this.http.get<CountResponse>(`${this.apiUrl}/servicios/count`, { withCredentials: true });
+  }
+
+  // Método para obtener el conteo de citas pendientes
+  getMacotasCount(): Observable<CountResponse> {
+    console.log("Intentando...")
+    return this.http.get<CountResponse>(`${this.apiUrl}/mascoticas/count`, { withCredentials: true });
+  }
+
 }

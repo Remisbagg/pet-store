@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MascotasService } from '../services/mascotas.service'; // Asegúrate de tener la ruta correcta
+import { MascotasService } from '../services/mascotas.service';
 
 @Component({
   selector: 'app-mis-mascotas',

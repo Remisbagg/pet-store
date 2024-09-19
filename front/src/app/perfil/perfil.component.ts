@@ -17,6 +17,7 @@ export class PerfilComponent implements OnInit {
   numberCel: number | null = null;
   direccion: string = '';
   password: string = '';
+  rol: string = '';
 
   constructor(
     private usuarioService: UsuarioServiceService,
@@ -147,7 +148,7 @@ export class PerfilComponent implements OnInit {
         genero: this.genero,
         numeroCelular: this.numberCel,
         direccion: this.direccion,
-        password: this.password
+        password: this.password,
       };
       this.usuarioService.updateUserProfile(email, userProfile).subscribe(
         (response: any) => {

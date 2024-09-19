@@ -1,0 +1,44 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="header">
+              <h4 class="title">Asignar Servicio</h4>
+            </div>
+            <div class="content">
+              <form (ngSubmit)="asignarServicio()">
+                <input type="hidden" [(ngModel)]="id" name="idMascota" />
+                
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Servicio</label>
+                      <select [(ngModel)]="servicio" name="servicio" class="form-control" required>
+                        <option value="" disabled selected>Seleccione un servicio</option>
+                        <option value="baño">Baño</option>
+                        <option value="paseo">Paseo</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Cuidador</label>
+                      <select [(ngModel)]="cuidador" name="cuidador" class="form-control" required>
+                        <option value="" disabled selected>Seleccione un cuidador</option>
+                        <option *ngFor="let c of cuidadores" [value]="c.nombre">{{ c.nombre }}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+  
+                <button type="submit" class="btn btn-info btn-fill pull-right" >Asignar Servicio</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
