@@ -20,33 +20,7 @@ export class LoginComponent {
   ) {}
 
   login() {
-    const credentials = {
-      email: this.email,
-      password: this.password
-    };
-
-    this.usuarioService.login(credentials).subscribe(
-      response => {
-        console.log('Inicio de sesión exitoso:', response);
-
-        // Mostrar toast verde de éxito
-        this.toastr.success('Inicio de sesión exitoso', '¡Éxito!', {
-          timeOut: 5000,
-          closeButton: true
-        });
-
         // Redirigir al dashboard
         this.router.navigate(['/dashboard']);
-      },
-      error => {
-        console.error('Error en el inicio de sesión:', error);
-
-        // Mostrar toast rojo de error
-        this.toastr.error('Credenciales incorrectas', 'Error', {
-          timeOut: 5000,
-          closeButton: true
-        });
       }
-    );
-  }
 }

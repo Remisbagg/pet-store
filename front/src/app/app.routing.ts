@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { CommonModule, } from '@angular/common';
+import { BrowserModule  } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { LoginComponent } from './login/login.component'; // Importa el componente de login
+import { AuthGuard } from './auth.guard'; // Importa el guard de autenticación
 
-const routes: Routes = [
+const routes: Routes =[
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'login',  // Cambia el redireccionamiento al componente login
     pathMatch: 'full',
   },
   {
-    path: 'login',
+    path: 'login',   // Nueva ruta para el componente de login
     component: LoginComponent
   },
   {
@@ -19,19 +22,30 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'home', 
-    component: HomeComponent
+    path: '',
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(x => x.AdminLayoutModule)
+      }
+    ]
   },
   {
     path: '**',
-    redirectTo: 'login'
+    redirectTo: 'login'  // Cambia el redireccionamiento a login
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes) 
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes, {
+       useHash: true
+    })
   ],
-  exports: [RouterModule],
+  exports: [],
 })
 export class AppRoutingModule { }

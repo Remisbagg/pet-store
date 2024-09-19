@@ -1,0 +1,26 @@
+/* detalle-mascota.component.css */
+.card-user {
+    position: relative; /* Para posicionar elementos relativos a la tarjeta */
+  }
+  
+  .card-user .image img {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Elimina el espacio debajo de la imagen */
+  }
+  
+  .card-user .content {
+    padding: 20px; /* Agrega espacio alrededor del contenido */
+    position: relative; /* Posiciona el contenido relativo al contenedor */
+    background: white; /* Fondo blanco para asegurarse de que el texto sea legible */
+    z-index: 1; /* Asegura que el contenido esté por encima de la imagen */
+  }
+  
+  .card-user .author a {
+    text-decoration: none; /* Opcional: quita el subrayado del enlace */
+  }
+  
+  .card-user .description {
+    margin-top: 10px; /* Espacio superior para separar el texto de la imagen */
+  }
+  

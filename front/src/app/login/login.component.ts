@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';  // Importar Toastr
-import { UsuarioServiceService } from '../usuario-service.service';
+import { ToastrService } from 'ngx-toastr'; 
+import { UsuarioServiceService } from '../services/usuario-service.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,44 @@ export class LoginComponent {
     private toastr: ToastrService  // Inyecta el servicio Toastr
   ) {}
 
+  // Función para validar el formulario
+  validarFormulario(): boolean {
+    // Validar que el email no esté vacío y tenga un formato válido
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!this.email || !emailRegex.test(this.email)) {
+      this.toastr.error('Por favor, introduce un correo válido', 'Error', {
+        timeOut: 5000
+      });
+      return false;
+    }
+
+    // Validar que la contraseña no esté vacía
+    if (!this.password) {
+      this.toastr.error('Por favor, introduce tu contraseña', 'Error', {
+        timeOut: 5000
+      });
+      return false;
+    }
+
+    // Validar que no haya caracteres peligrosos en el email o contraseña (prevención de SQL injection)
+    const sqlInjectionRegex = /['"\\;]/;
+    if (sqlInjectionRegex.test(this.email) || sqlInjectionRegex.test(this.password)) {
+      this.toastr.error('Los datos contienen caracteres no permitidos', 'Error', {
+        timeOut: 5000
+      });
+      return false;
+    }
+
+    return true; // Si todas las validaciones pasan
+  }
+
+  // Función de inicio de sesión
   login() {
+    // Validar formulario antes de enviar
+    if (!this.validarFormulario()) {
+      return;
+    }
+
     const credentials = {
       email: this.email,
       password: this.password
